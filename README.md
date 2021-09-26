@@ -1,6 +1,6 @@
 # Jalapeño API Gateway Docs
 
-This is the source code of the [Jalapeño API Gateway Docs Website] https://jalapeno-api-gateway.github.io/jagw-docs/.
+This is the source code of the [Jalapeño API Gateway Docs Website](https://jalapeno-api-gateway.github.io/jagw-docs/).
 
 This website is built using [Docusaurus 2](https://docusaurus.io/).
 
@@ -31,7 +31,7 @@ This command generates static content into the `build` directory and can be serv
 ### Deployment
 
 The following commands build the website and push it to the `gh-pages` branch for deployment.
-For more information see the official [Docusaurus documentation)(https://docusaurus.io/docs/deployment).
+For more information see the official [Docusaurus documentation](https://docusaurus.io/docs/deployment).
 
 #### Bash
 ```
