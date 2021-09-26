@@ -6,13 +6,14 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 (module.exports = {
   title: 'Jalapeño API Gateway',
   tagline: 'Jalapeño is cool',
-  url: 'https://mbongard.github.io',
+  url: 'https://jalapeno-api-gateway.github.io',
   baseUrl: '/jagw-docs/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
-  organizationName: 'INS', // Usually your GitHub org/user name.
-  projectName: 'jalapeno-api-gateway', // Usually your repo name.
+  organizationName: 'jalapeno-api-gateway', // Usually your GitHub org/user name.
+  projectName: 'jagw-docs', // Usually your repo name.
+  trailingSlash: false,
 
   presets: [
     [
