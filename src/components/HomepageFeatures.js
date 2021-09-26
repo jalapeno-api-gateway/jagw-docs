@@ -1,48 +1,53 @@
 import React from 'react';
 import clsx from 'clsx';
 import styles from './HomepageFeatures.module.css';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 
 const FeatureList = [
   {
-    title: 'Easy to Use',
-    Svg: require('../../static/img/undraw_docusaurus_mountain.svg').default,
+    title: 'Cloud-Native',
+    image: '/img/kubernetes.png',
+    link: 'docs/installation',
     description: (
       <>
-        Docusaurus was designed from the ground up to be easily installed and
-        used to get your website up and running quickly.
+        The Jalapeño API Gateway was designed from the ground up to be a light-weight cloud-native application stack.
       </>
     ),
   },
   {
-    title: 'Focus on What Matters',
-    Svg: require('../../static/img/undraw_docusaurus_tree.svg').default,
+    title: 'Request Data',
+    image: '/img/request-service.png',
+    link: 'docs/api/request-service',
     description: (
       <>
-        Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
-        ahead and move your docs into the <code>docs</code> directory.
+        The Jalapeño API Gateway allows you to make simple API requests via gRPC to fetch both topology and telemetry data from Jalapeño.
       </>
     ),
   },
   {
-    title: 'Powered by React',
-    Svg: require('../../static/img/undraw_docusaurus_react.svg').default,
+    title: 'Subscribe To Data',
+    image: '/img/subscription-service.png',
+    link: 'docs/api/subscription-service',
     description: (
       <>
-        Extend or customize your website layout by reusing React. Docusaurus can
-        be extended while reusing the same header and footer.
+        The Jalapeño API Gateway allows you to subscribe to specific collections and counters. The Gateway will inform you via gRPC on changes in the network.
       </>
     ),
   },
 ];
 
-function Feature({Svg, title, description}) {
+function Feature({image, title, link, description}) {
   return (
     <div className={clsx('col col--4')}>
       <div className="text--center">
-        <Svg className={styles.featureSvg} alt={title} />
+        <a href={link}>
+          <img src={useBaseUrl(image)} className={styles.featureImage} alt={title} />
+        </a>
       </div>
       <div className="text--center padding-horiz--md">
-        <h3>{title}</h3>
+        <a href={link}>
+          <h3>{title}</h3>
+        </a>
         <p>{description}</p>
       </div>
     </div>

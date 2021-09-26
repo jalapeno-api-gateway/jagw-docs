@@ -79,14 +79,7 @@ rpc GetLsLinks(TopologyRequest) returns (LsLinkResponse) {}
 
 #### Description
 
-Takes a [TopologyRequest](#topologyrequest) with the specified **keys** and **propertyNames** and returns an [LsLinkResponse](#lslinkresponse) containing all requested [LsLinks](#lslink) with the requested properties.
-
-- Omitting **keys** returns all available [LsLinks](#lslink).
-- Omitting **propertyNames** returns [LsLinks](#lslink) with all available properties.
-
-#### Examples
-
-See examples for method [GetLsNodes(TopologyRequest)](#examples), as it follows the same principle.
+See method [GetLsNodes(TopologyRequest)](#getlsnodestopologyrequest). It follows the same principle.
 
 ### `GetTelemetryData(TelemetryRequest)`
 

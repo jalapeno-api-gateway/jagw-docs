@@ -29,10 +29,13 @@ export default function Home() {
   const {siteConfig} = useDocusaurusContext();
   return (
     <Layout
-      title={`Hello from ${siteConfig.title}`}
-      description="Description will go into a meta tag in <head />">
+      title={`Home`}
+      description={`${siteConfig.title} Documentation`}>
       <HomepageHeader />
       <main>
+        <div className="welcome-text">
+          The Jalapeño API Gateway offers you a simple and easy to use way to access the data provided by the Jalapeño application stack developed by Cisco to give you access to all the goodies of Segment Routing. 
+        </div>
         <HomepageFeatures />
       </main>
     </Layout>

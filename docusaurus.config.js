@@ -5,7 +5,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 /** @type {import('@docusaurus/types').DocusaurusConfig} */
 (module.exports = {
   title: 'Jalapeño API Gateway',
-  tagline: 'Jalapeño is cool',
+  tagline: 'A simple, light-weight, cloud-native API Gateway for Jalapeño.',
   url: 'https://jalapeno-api-gateway.github.io',
   baseUrl: '/jagw-docs/',
   onBrokenLinks: 'throw',
@@ -23,7 +23,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to your repo.
-          editUrl: 'https://gitlab.ost.ch/ins/jalapeno-api',
+          editUrl: 'https://github.com/jalapeno-api-gateway',
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
@@ -55,8 +55,8 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
             label: 'API',
           },
           {
-            href: 'https://gitlab.ost.ch/ins/jalapeno-api',
-            label: 'GitLab',
+            href: 'https://github.com/jalapeno-api-gateway',
+            label: 'GitHub',
             position: 'right',
           },
         ],
@@ -82,13 +82,13 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
             title: 'More',
             items: [
               {
-                label: 'GitLab',
-                href: 'https://gitlab.ost.ch/ins/jalapeno-api',
+                label: 'GitHub',
+                href: 'https://github.com/jalapeno-api-gateway',
               },
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} Jalapeño API Gateway. Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} Jalapeño API Gateway Docs. Built with Docusaurus.`,
       },
       prism: {
         theme: lightCodeTheme,
