@@ -30,20 +30,15 @@ This command generates static content into the `build` directory and can be serv
 
 ### Deployment
 
-The following commands build the website and push it to the `gh-pages` branch for deployment.
+Use one of the following commands build the website and push it to the `gh-pages` branch for deployment.
 For more information see the official [Docusaurus documentation](https://docusaurus.io/docs/deployment).
 
 #### Bash
-```
+```bash
 $ GIT_USER=<Your GitHub username> USE_SSH=true yarn deploy
-```
-
-#### Windows
-```
-cmd /C "set "GIT_USER=<GITHUB_USERNAME>" && set "USE_SSH=true" && yarn deploy"
 ```
 
 #### PowerShell
 ```
-cmd /C 'set "GIT_USER=<GITHUB_USERNAME>" && set "USE_SSH=true" && yarn deploy'
+$ cmd /C 'set "GIT_USER=<Your GitHub username>" && yarn deploy'
 ```
