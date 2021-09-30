@@ -1,8 +1,11 @@
 ---
-sidebar_position: 2
-title: "Design"
+sidebar_position: 1
+title: "Concept"
 ---
+
 import useBaseUrl from '@docusaurus/useBaseUrl';
+
+This section describes the basic concept and core functionality of the Jalapeño API Gateway.
 
 ## Deployment Diagram
 <div align="center">
@@ -17,7 +20,7 @@ Here the basic principle of Jalapeño is described:
 1. Changes to the network are published in various Kafka topics, i.e. in the topic `gobmp.parsed.ls_node`, by `GoBMP` and `Telegraf`.
 
 <details>
-   <summary>All Kafka Topics</summary>
+   <summary>Kafka Topics for unprocessed events</summary>
    <ul>
    <li>These are all Kafka topics to which <code>GoBMP</code> writes topology updates:
 
@@ -56,7 +59,7 @@ Here the basic principle of Jalapeño is described:
 3. When it has successfully updated the database, it writes a message to a seperate Kafka topic (ending in `_events`), i.e. `gobmp.parsed.ls_node_events`. This message contains the key to the document in the GraphDB that has been updated (or deleted).
 
 <details>
-   <summary>All Kafka Topics</summary>
+   <summary>Kafka Topics for processed events</summary>
    
    <ul>
    <li>These are all Kafka topics to which the processor <code>Topology</code> writes updates, once it has successfully updated the <code>GraphDB</code>:
