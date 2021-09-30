@@ -28,7 +28,7 @@ This sections lists all `protobuf` messages defined by the services of the Jalap
 :::info 'required', 'optional' & 'repeated'
 All properties that are preceded by either the **optional** or **required** keyword do not contain the actual value, but rather pointers to those values. This is due to the implementation of [proto2](https://developers.google.com/protocol-buffers/docs/proto).
 
-The reason for this design choice is explained in the section [Why use proto2 instead of proto3?](design/design-choices#why-use-proto2-instead-of-proto3).
+The reason for this design choice is explained in the section [Why use proto2 instead of proto3?](../design/design-choices#why-use-proto2-instead-of-proto3).
 :::
 
 ## Request Messages

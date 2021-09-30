@@ -38,7 +38,17 @@ In certain situations it may be important for a receiver to know the difference.
 
 The solution is to use *proto2*. *Proto2* allows to make fields ***nullable***, using the keyword *optional*. It achieves this by using pointers for all fields, even for primitive values.
 
-Therefore, when a *DataRate* is set explicitly to *0*, the field points to the value *0*. But if the *DataRate* is not set, the point is *`<nil>`*.
+```protobuf
+syntax = "proto2";
+
+message TelemetryData {
+    ...
+    optional int64 dataRate = 2;
+    ...
+}
+```
+
+This way, when the *DataRate* is set explicitly to *0*, the field points to the value *0*. But if the *DataRate* is not set, the point is *`<nil>`*.
 
 For more detail see this thread on [Stackoverflow](https://stackoverflow.com/a/42634681).
 
