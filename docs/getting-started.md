@@ -15,8 +15,8 @@ To address the Gateway you can either compile the Protobuf files yourself or use
 
 The easiest way to use the Jalapeño API Gateway is to use one of the ready-to-use, language-specific repositories that contain the pre-compiled code. As of now, the following languages are supported:
 
-- [Golang](https://github.com/jalapeno-api-gateway/protorepo-jagw-go)
-- [NodeJS](https://github.com/jalapeno-api-gateway/protorepo-jagw-node)
+- [Golang](https://github.com/jalapeno-api-gateway/protorepo-jagw-go/releases)
+- [NodeJS](https://github.com/jalapeno-api-gateway/protorepo-jagw-node/releases)
 
 Simply import the code to your project depending on what development language you are using.
 
