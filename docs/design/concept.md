@@ -83,6 +83,7 @@ Here the basic principle of Jalapeño is described:
       <li>gobmp.parsed.unicast_prefix_events</li>
       <li>gobmp.parsed.unicast_prefix_v4_events</li>
       <li>gobmp.parsed.unicast_prefix_v6_events</li>
+      <li>jalapeno.ls_node_edge_events</li>
    </ul>
    </li>
 

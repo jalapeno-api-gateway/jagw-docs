@@ -11,75 +11,88 @@ import TOCInline from "@theme/TOCInline"
 
 ```protobuf
 service SubscriptionService {
-    rpc SubscribeToLSNodes(TopologySubscription) returns (stream LSNodeEvent) {}
-    rpc SubscribeToLSLinks(TopologySubscription) returns (stream LSLinkEvent) {}
-    rpc SubscribeToLSPrefixes(TopologySubscription) returns (stream LSPrefixEvent) {}
-    rpc SubscribeToLSSRv6SIDs(TopologySubscription) returns (stream LSSRv6SIDEvent) {}
+    rpc SubscribeToLsNodes(TopologySubscription) returns (stream LsNodeEvent) {}
+    rpc SubscribeToLsLinks(TopologySubscription) returns (stream LsLinkEvent) {}
+    rpc SubscribeToLsPrefixes(TopologySubscription) returns (stream LsPrefixEvent) {}
+    rpc SubscribeToLsSrv6Sids(TopologySubscription) returns (stream LsSrv6SidEvent) {}
+    rpc SubscribeToLsNodeEdges(TopologySubscription) returns (stream LsNodeEdgeEvent) {}
     rpc SubscribeToTelemetryData(TelemetrySubscription) returns (stream TelemetryEvent) {}
 }
 ```
 
 ## Methods
 
-### `SubscribeToLSNodes()`
+### `SubscribeToLsNodes()`
 
 ```protobuf
-rpc SubscribeToLSNodes(TopologySubscription) returns (stream LSNodeEvent) {}
+rpc SubscribeToLsNodes(TopologySubscription) returns (stream LsNodeEvent) {}
 ```
 
-*See also*: [TopologySubscription](messages#topologysubscription), [LSNodeEvent](messages#lsnodeevent)
+*See also*: [TopologySubscription](messages#topologysubscription), [LsNodeEvent](messages#lsnodeevent)
 
 #### Description
 
-Takes a [TopologySubscription](messages#topologysubscription) with the specified **keys** and **propertyNames** and returns a stream of [LSNodeEvents](messages#lsnodeevent). An LSNodeEvent contains an update to a single [LSNode](messages#lsnode). Only [LSNodes](messages#lsnode) matching one of the specified **keys** are returned and only properties specified in **propertyNames** are set.
+Takes a [TopologySubscription](messages#topologysubscription) with the specified **keys** and **propertyNames** and returns a stream of [LsNodeEvents](messages#lsnodeevent). An LsNodeEvent contains an update to a single [LsNode](messages#lsnode). Only [LsNodes](messages#lsnode) matching one of the specified **keys** are returned and only properties specified in **propertyNames** are set.
 
-- Omitting **keys** streams [LSNodeEvents](messages#lsnodeevent) for all available [LSNodes](messages#lsnode).
-- Omitting **propertyNames** streams [LSNodeEvents](messages#lsnodeevent) for [LSNodes](messages#lsnode) with all available properties.
+- Omitting **keys** streams [LsNodeEvents](messages#lsnodeevent) for all available [LsNodes](messages#lsnode).
+- Omitting **propertyNames** streams [LsNodeEvents](messages#lsnodeevent) for [LsNodes](messages#lsnode) with all available properties.
 
 #### Examples
 
-keys | propertyNames | [LSNodeEvents](messages#lsnodeevent)
+keys | propertyNames | [LsNodeEvents](messages#lsnodeevent)
 --- | --- | ---
-[<br />"nodeKey1",<br />"nodeKey2"<br />] | [<br />"Name",<br />"ASN",<br />"RouterIP"<br />] | Streams [LSNodeEvents](messages#lsnodeevent) for [LSNodes](messages#lsnode) for the two specified keys with the three requested properties.
-- | [<br />"Name",<br />"ASN",<br />"RouterIP"<br />] | Streams [LSNodeEvents](messages#lsnodeevent) for all available [LSNodes](messages#lsnode) with the three requested properties.
-[<br />"nodeKey1",<br />"nodeKey2"<br />] | - | Streams [LSNodeEvents](messages#lsnodeevent) for [LSNodes](messages#lsnode) for the two specified keys with all available properties.
-- | - | Streams [LSNodeEvents](messages#lsnodeevent) for all available [LSNodes](messages#lsnode) with all available properties.
+[<br />"nodeKey1",<br />"nodeKey2"<br />] | [<br />"Name",<br />"Asn",<br />"RouterIp"<br />] | Streams [LsNodeEvents](messages#lsnodeevent) for [LsNodes](messages#lsnode) for the two specified keys with the three requested properties.
+- | [<br />"Name",<br />"Asn",<br />"RouterIp"<br />] | Streams [LsNodeEvents](messages#lsnodeevent) for all available [LsNodes](messages#lsnode) with the three requested properties.
+[<br />"nodeKey1",<br />"nodeKey2"<br />] | - | Streams [LsNodeEvents](messages#lsnodeevent) for [LsNodes](messages#lsnode) for the two specified keys with all available properties.
+- | - | Streams [LsNodeEvents](messages#lsnodeevent) for all available [LsNodes](messages#lsnode) with all available properties.
 
-### `SubscribeToLSLinks()`
+### `SubscribeToLsLinks()`
 
 ```protobuf
-rpc SubscribeToLSLinks(TopologySubscription) returns (stream LSLinkEvent) {}
+rpc SubscribeToLsLinks(TopologySubscription) returns (stream LsLinkEvent) {}
 ```
 
-*See also*: [TopologySubscription](messages#topologysubscription), [LSLinkEvent](messages#lslinkevent)
+*See also*: [TopologySubscription](messages#topologysubscription), [LsLinkEvent](messages#lslinkevent)
 
 #### Description
 
-See method [SubscribeToLSNodes()](#subscribetolsnodes). It follows the same principle regarding **keys** and **propertyNames**.
+See method [SubscribeToLsNodes()](#subscribetolsnodes). It follows the same principle regarding **keys** and **propertyNames**.
 
-### `SubscribeToLSPrefixes()`
+### `SubscribeToLsPrefixes()`
 
 ```protobuf
-rpc SubscribeToLSPrefixes(TopologySubscription) returns (stream LSPrefixEvent) {}
+rpc SubscribeToLsPrefixes(TopologySubscription) returns (stream LsPrefixEvent) {}
 ```
 
-*See also*: [TopologySubscription](messages#topologysubscription), [LSPrefixEvent](messages#lsprefixevent)
+*See also*: [TopologySubscription](messages#topologysubscription), [LsPrefixEvent](messages#lsprefixevent)
 
 #### Description
 
-See method [SubscribeToLSNodes()](#subscribetolsnodes). It follows the same principle regarding **keys** and **propertyNames**.
+See method [SubscribeToLsNodes()](#subscribetolsnodes). It follows the same principle regarding **keys** and **propertyNames**.
 
-### `SubscribeToLSSRv6SIDs()`
+### `SubscribeToLsSrv6Sids()`
 
 ```protobuf
-rpc SubscribeToLSSRv6SIDs(TopologySubscription) returns (stream LSSRv6SIDEvent) {}
+rpc SubscribeToLsSrv6Sids(TopologySubscription) returns (stream LsSrv6SidEvent) {}
 ```
 
-*See also*: [TopologySubscription](messages#topologysubscription), [LSSRv6SIDEvent](messages#lssrv6sidevent)
+*See also*: [TopologySubscription](messages#topologysubscription), [LsSrv6SidEvent](messages#lssrv6sidevent)
 
 #### Description
 
-See method [SubscribeToLSNodes()](#subscribetolsnodes). It follows the same principle regarding **keys** and **propertyNames**.
+See method [SubscribeToLsNodes()](#subscribetolsnodes). It follows the same principle regarding **keys** and **propertyNames**.
+
+### `SubscribeToLsNodeEdges()`
+
+```protobuf
+rpc SubscribeToLsNodeEdges(TopologySubscription) returns (stream LsNodeEdgeEvent) {}
+```
+
+*See also*: [TopologySubscription](messages#topologysubscription), [LsNodeEdgeEvent](messages#lsnodeedgeevent)
+
+#### Description
+
+See method [SubscribeToLsNodes()](#subscribetolsnodes). It follows the same principle regarding **keys** and **propertyNames**.
 
 ### `SubscribeToTelemetryData()`
 

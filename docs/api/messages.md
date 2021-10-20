@@ -38,7 +38,7 @@ The reason for this design choice is explained in the section [Why use proto2 in
 ```protobuf
 message TopologyRequest {
     repeated string keys = 1;
-    repeated string propertyNames = 2;
+    repeated string property_names = 2;
 }
 ```
 
@@ -46,40 +46,48 @@ message TopologyRequest {
 
 ```protobuf
 message TelemetryRequest {
-    repeated string ipv4addresses = 1;
-    repeated string propertyNames = 2;
+    repeated InterfaceIdentifier interface_ids = 1;
+    repeated string property_names = 2;
 }
 ```
 
-### `LSNodeResponse`
+### `LsNodeResponse`
 
 ```protobuf
-message LSNodeResponse {
-    repeated LSNode lsNodes = 1;
+message LsNodeResponse {
+    repeated LsNode ls_nodes = 1;
 }
 ```
 
-### `LSLinkResponse`
+### `LsLinkResponse`
 
 ```protobuf
-message LSLinkResponse {
-    repeated LSLink lsLinks = 1;
+message LsLinkResponse {
+    repeated LsLink ls_links = 1;
 }
 ```
 
-### `LSPrefixResponse`
+### `LsPrefixResponse`
 
 ```protobuf
-message LSPrefixResponse {
-    repeated LSPrefix lsPrefixes = 1;
+message LsPrefixResponse {
+    repeated LsPrefix ls_prefixes = 1;
 }
 ```
 
-### `LSSRv6SIDResponse`
+### `LsSrv6SidResponse`
 
 ```protobuf
-message LSSRv6SIDResponse {
-    repeated LSSRv6SID lsSRv6SIDs = 1;
+message LsSrv6SidResponse {
+    repeated LsSrv6Sid ls_srv6_sids = 1;
+}
+```
+
+### `LsNodeEdgeResponse`
+
+```protobuf
+message LsNodeEdgeResponse {
+    repeated LsNodeEdge ls_node_edges = 1;
 }
 ```
 
@@ -87,7 +95,7 @@ message LSSRv6SIDResponse {
 
 ```protobuf
 message TelemetryResponse {
-    repeated TelemetryData telemetryData = 1;
+    repeated TelemetryData telemetry_data = 1;
 }
 ```
 
@@ -95,12 +103,13 @@ message TelemetryResponse {
 
 ```protobuf
 message TelemetryData {
-    required string ipv4address = 1;
-    optional int64 dataRate = 2;
-    optional int64 packetsSent = 3;
-    optional int64 packetsReceived = 4;
-    optional string state = 5;
-    optional int64 lastStateTransitionTime = 6;
+    required InterfaceIdentifier interface_id = 1;
+    optional string ipv4_address = 2;
+    optional int64 data_rate = 3;
+    optional int64 packets_sent = 4;
+    optional int64 packets_received = 5;
+    optional string state = 6;
+    optional int64 last_state_transition_time = 7;
 }
 ```
 
@@ -111,7 +120,7 @@ message TelemetryData {
 ```protobuf
 message TopologySubscription {
     repeated string keys = 1;
-    repeated string propertyNames = 2;
+    repeated string property_names = 2;
 }
 ```
 
@@ -119,48 +128,58 @@ message TopologySubscription {
 
 ```protobuf
 message TelemetrySubscription {
-    repeated string ipv4addresses = 1;
-    repeated string propertyNames = 2;
+    repeated InterfaceIdentifier interface_ids = 1;
+    repeated string property_names = 2;
 }
 ```
 
-### `LSNodeEvent`
+### `LsNodeEvent`
 
 ```protobuf
-message LSNodeEvent {
+message LsNodeEvent {
     required string action = 1;
     required string key = 2;
-    optional LSNode lsNode = 3;
+    optional LsNode ls_node = 3;
 }
 ```
 
-### `LSLinkEvent`
+### `LsLinkEvent`
 
 ```protobuf
-message LSLinkEvent {
+message LsLinkEvent {
     required string action = 1;
     required string key = 2;
-    optional LSLink lsLink = 3;
+    optional LsLink ls_link = 3;
 }
 ```
 
-### `LSPrefixEvent`
+### `LsPrefixEvent`
 
 ```protobuf
-message LSPrefixEvent {
+message LsPrefixEvent {
     required string action = 1;
     required string key = 2;
-    optional LSPrefix lsPrefix = 3;
+    optional LsPrefix ls_prefix = 3;
 }
 ```
 
-### `LSSRv6SIDEvent`
+### `LsSrv6SidEvent`
 
 ```protobuf
-message LSSRv6SIDEvent {
+message LsSrv6SidEvent {
     required string action = 1;
     required string key = 2;
-    optional LSSRv6SID lsSRv6SID = 3;
+    optional LsSrv6Sid ls_srv6_sid = 3;
+}
+```
+
+### `LsNodeEdgeEvent`
+
+```protobuf
+message LsNodeEdgeEvent {
+    required string action = 1;
+    required string key = 2;
+    optional LsNodeEdge ls_node_edge = 3;
 }
 ```
 
@@ -168,12 +187,13 @@ message LSSRv6SIDEvent {
 
 ```protobuf
 message TelemetryEvent {
-    required string ipv4address = 1;
-    optional int64 dataRate = 2;
-    optional int64 packetsSent = 3;
-    optional int64 packetsReceived = 4;
-    optional string state = 5;
-    optional int64 lastStateTransitionTime = 6;
+    required InterfaceIdentifier interface_id = 1;
+    optional string ipv4_address = 2;
+    optional int64 data_rate = 3;
+    optional int64 packets_sent = 4;
+    optional int64 packets_received = 5;
+    optional string state = 6;
+    optional int64 last_state_transition_time = 7;
 }
 ```
 
@@ -181,108 +201,123 @@ message TelemetryEvent {
 
 These messages are used by both the **Request Service** and the **Subscription Service**.
 
-### `LSNode`
+### `LsNode`
 
 ```protobuf
-message LSNode {
-    required string Key = 1;
-    optional string ID = 2;
-    optional string RouterHash = 3;
-    optional int64 DomainID = 4;
-    optional string RouterIP = 5;
-    optional string PeerHash = 6;
-    optional string PeerIP = 7;
-    optional int32 PeerASN = 8;
-    optional string Timestamp = 9;
-    optional string IGPRouterID = 10;
-    optional uint32 ASN = 11;
-    repeated MultiTopologyIdentifier MTID = 12;
-    optional string AreaID = 13;
-    optional string Protocol = 14;
-    optional uint32 ProtocolID = 15;
-    optional string Name = 16;
-    optional bool IsPrepolicy = 17;
-    optional bool IsAdjRIBIn = 18;
+message LsNode {
+    required string key = 1;
+    optional string id = 2;
+    optional string router_hash = 3;
+    optional int64 domain_id = 4;
+    optional string router_ip = 5;
+    optional string peer_hash = 6;
+    optional string peer_ip = 7;
+    optional int32 peer_asn = 8;
+    optional string timestamp = 9;
+    optional string igp_router_id = 10;
+    optional uint32 asn = 11;
+    repeated MultiTopologyIdentifier mtid = 12;
+    optional string area_id = 13;
+    optional string protocol = 14;
+    optional uint32 protocol_id = 15; // protobuf does not support uint8
+    optional string name = 16;
+    optional bool is_prepolicy = 17;
+    optional bool is_adj_rib_in = 18;
 }
 ```
 
-### `LSLink`
+### `LsLink`
 
 ```protobuf
-message LSLink {
-    required string Key = 1;
-    optional string ID = 2;
-    optional string RouterHash = 3;
-    optional string RouterIP = 4;
-    optional int64 DomainID = 5;
-    optional string PeerHash = 6;
-    optional string PeerIP = 7;
-    optional int32 PeerASN = 8;
-    optional string Timestamp = 9;
-    optional string IGPRouterID = 10;
-    optional string Protocol = 11;
-    optional string AreaID = 12;
-    optional string Nexthop = 13;
-    optional MultiTopologyIdentifier MTID = 14;
-    optional string LocalLinkIP = 15;
-    optional string RemoteLinkIP = 16;
-    optional uint32 IGPMetric = 17;
-    optional string RemoteNodeHash = 18;
-    optional string LocalNodeHash = 19;
-    optional string RemoteIGPRouterID = 20;
+message LsLink {
+    required string key = 1;
+    optional string id = 2;
+    optional string router_hash = 3;
+    optional string router_ip = 4;
+    optional int64 domain_id = 5;
+    optional string peer_hash = 6;
+    optional string peer_ip = 7;
+    optional int32 peer_asn = 8;
+    optional string timestamp = 9;
+    optional string igp_router_id = 10;
+    optional string protocol = 11;
+    optional string area_id = 12;
+    optional string nexthop = 13;
+    optional MultiTopologyIdentifier mtid = 14;
+    optional string local_link_id = 15;
+    optional string remote_link_id = 16;
+    optional string local_link_ip = 17;
+    optional string remote_link_ip = 18;
+    optional uint32 igp_metric = 19;
+    optional string remote_node_hash = 20;
+    optional string local_node_hash = 21;
+    optional string remote_igp_router_id = 22;
+}
+
+```
+
+### `LsPrefix`
+
+```protobuf
+message LsPrefix {
+    required string key = 1;
+    optional string id = 2;
+    optional string router_hash = 3;
+    optional string router_ip = 4;
+    optional int64 domain_id = 5;
+    optional string peer_hash = 6;
+    optional string peer_ip = 7;
+    optional int32 peer_asn = 8;
+    optional string timestamp = 9;
+    optional string igp_router_id = 10;
+    optional string protocol = 11;
+    optional string area_id = 12;
+    optional string nexthop = 13;
+    optional string local_node_hash = 14;
+    optional MultiTopologyIdentifier mtid = 15;
+    optional string prefix = 16;
+    optional int32 prefix_len = 17;
+    optional uint32 prefix_metric = 18;
+    optional bool is_prepolicy = 19;
+    optional bool is_adj_rib_in = 20;
 }
 ```
 
-### `LSPrefix`
+### `LsSrv6Sid`
 
 ```protobuf
-message LSPrefix {
-    required string Key = 1;
-    optional string ID = 2;
-    optional string RouterHash = 3;
-    optional string RouterIP = 4;
-    optional int64 DomainID = 5;
-    optional string PeerHash = 6;
-    optional string PeerIP = 7;
-    optional int32 PeerASN = 8;
-    optional string Timestamp = 9;
-    optional string IGPRouterID = 10;
-    optional string Protocol = 11;
-    optional string AreaID = 12;
-    optional string Nexthop = 13;
-    optional string LocalNodeHash = 14;
-    optional MultiTopologyIdentifier MTID = 15;
-    optional string Prefix = 16;
-    optional int32 PrefixLen = 17;
-    optional uint32 PrefixMetric = 18;
-    optional bool IsPrepolicy = 19;
-    optional bool IsAdjRIBIn = 20;
+message LsSrv6Sid {
+    required string key = 1;
+    optional string id = 2;
+    optional string router_hash = 3;
+    optional string router_ip = 4;
+    optional int64 domain_id = 5;
+    optional string peer_hash = 6;
+    optional string peer_ip = 7;
+    optional int32 peer_asn = 8;
+    optional string timestamp = 9;
+    optional string igp_router_id = 10;
+    optional uint32 local_node_asn = 11;
+    optional string protocol = 12;
+    optional string nexthop = 13;
+    optional string local_node_hash = 14;
+    optional MultiTopologyIdentifier mtid = 15;
+    optional uint32 igp_flags = 16; // protobuf does not support uint8
+    optional bool is_prepolicy = 17;
+    optional bool is_adj_rib_in = 18;
+    optional string srv6_sid = 19;
 }
 ```
 
-### `LSSRv6SID`
+### `LsNodeEdge`
 
 ```protobuf
-message LSSRv6SID {
-    required string Key = 1;
-    optional string ID = 2;
-    optional string RouterHash = 3;
-    optional string RouterIP = 4;
-    optional int64 DomainID = 5;
-    optional string PeerHash = 6;
-    optional string PeerIP = 7;
-    optional int32 PeerASN = 8;
-    optional string Timestamp = 9;
-    optional string IGPRouterID = 10;
-    optional uint32 LocalNodeASN = 11;
-    optional string Protocol = 12;
-    optional string Nexthop = 13;
-    optional string LocalNodeHash = 14;
-    optional MultiTopologyIdentifier MTID = 15;
-    optional uint32 IGPFlags = 16;
-    optional bool IsPrepolicy = 17;
-    optional bool IsAdjRIBIn = 18;
-    optional string SRv6SID = 19;
+message LsNodeEdge {
+    required string key = 1;
+    optional string id = 2;
+    optional string from = 3;
+    optional string to = 4;
+    optional string link = 5;
 }
 ```
 
@@ -292,8 +327,17 @@ message LSSRv6SID {
 
 ```protobuf
 message MultiTopologyIdentifier {
-    required bool OFlag = 1;
-    required bool AFlag = 2;
-    required uint32 MTID = 3;
+    required bool o_flag = 1;
+    required bool a_flag = 2;
+    required uint32 mtid = 3; // protobuf does not support uint16
+}
+```
+
+### `InterfaceIdentifier`
+
+```protobuf
+message InterfaceIdentifier {
+    required string hostname = 1;
+    required int32 link_id = 2;
 }
 ```

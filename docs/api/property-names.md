@@ -19,94 +19,102 @@ The Jalapeño API Gateway ignores invalid propertyNames. Make sure therefore, th
 
 ## All PropertyNames
 
-### `LSNode` Properties
+### `LsNode` Properties
 
 - `"Key"`
-- `"ID"`
+- `"Id"`
 - `"RouterHash"`
-- `"DomainID"`
-- `"RouterIP"`
+- `"DomainId"`
+- `"RouterIp"`
 - `"PeerHash"`
-- `"PeerIP"`
-- `"PeerASN"`
+- `"PeerIp"`
+- `"PeerAsn"`
 - `"Timestamp"`
-- `"IGPRouterID"`
-- `"ASN"`
-- `"MTID"`
-- `"AreaID"`
+- `"IgpRouterId"`
+- `"Asn"`
+- `"Mtid"`
+- `"AreaId"`
 - `"Protocol"`
-- `"ProtocolID"`
+- `"ProtocolId"`
 - `"Name"`
 - `"IsPrepolicy"`
-- `"IsAdjRIBIn"`
+- `"IsAdjRibIn"`
 
-### `LSLink` Properties
+### `LsLink` Properties
 
 - `"Key"`
-- `"ID"`
+- `"Id"`
 - `"RouterHash"`
-- `"RouterIP"`
-- `"DomainID"`
+- `"RouterIp"`
+- `"DomainId"`
 - `"PeerHash"`
-- `"PeerIP"`
-- `"PeerASN"`
+- `"PeerIp"`
+- `"PeerAsn"`
 - `"Timestamp"`
-- `"IGPRouterID"`
+- `"IgpRouterId"`
 - `"Protocol"`
-- `"AreaID"`
+- `"AreaId"`
 - `"Nexthop"`
-- `"MTID"`
-- `"LocalLinkIP"`
-- `"RemoteLinkIP"`
-- `"IGPMetric"`
+- `"Mtid"`
+- `"LocalLinkIp"`
+- `"RemoteLinkIp"`
+- `"IgpMetric"`
 - `"RemoteNodeHash"`
 - `"LocalNodeHash"`
-- `"RemoteIGPRouterID"`
+- `"RemoteIgpRouterId"`
 
-### `LSPrefix` Properties
+### `LsPrefix` Properties
 
 - `"Key"`
-- `"ID"`
+- `"Id"`
 - `"RouterHash"`
-- `"RouterIP"`
-- `"DomainID"`
+- `"RouterIp"`
+- `"DomainId"`
 - `"PeerHash"`
-- `"PeerIP"`
-- `"PeerASN"`
+- `"PeerIp"`
+- `"PeerAsn"`
 - `"Timestamp"`
-- `"IGPRouterID"`
+- `"IgpRouterId"`
 - `"Protocol"`
-- `"AreaID"`
+- `"AreaId"`
 - `"Nexthop"`
 - `"LocalNodeHash"`
-- `"MTID"`
+- `"Mtid"`
 - `"Prefix"`
 - `"PrefixLen"`
 - `"PrefixMetric"`
 - `"IsPrepolicy"`
-- `"IsAdjRIBIn"`
+- `"IsAdjRibIn"`
 
-### `LSSRv6SID` Properties
+### `LsSrv6Sid` Properties
 
 - `"Key"`
-- `"ID"`
+- `"Id"`
 - `"RouterHash"`
-- `"RouterIP"`
-- `"DomainID"`
+- `"RouterIp"`
+- `"DomainId"`
 - `"PeerHash"`
-- `"PeerIP"`
-- `"PeerASN"`
+- `"PeerIp"`
+- `"PeerAsn"`
 - `"Timestamp"`
-- `"IGPRouterID"`
-- `"LocalNodeASN"`
+- `"IgpRouterId"`
+- `"LocalNodeAsn"`
 - `"Protocol"`
 - `"Nexthop"`
 - `"LocalNodeHash"`
-- `"MTID"`
-- `"IGPFlags"`
+- `"Mtid"`
+- `"IgpFlags"`
 - `"IsPrepolicy"`
-- `"IsAdjRIBIn"`
-- `"SRv6SID"`
+- `"IsAdjRibIn"`
+- `"Srv6Sid"`
+
+### `LsNodeEdge` Properties
+
+- `"Key"`
+- `"Id"`
+- `"From"`
+- `"To"`
+- `"Link"`
 
 ### Properties for Physical Interfaces
 

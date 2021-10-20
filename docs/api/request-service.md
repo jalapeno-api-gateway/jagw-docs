@@ -11,75 +11,88 @@ import TOCInline from "@theme/TOCInline"
 
 ```protobuf
 service RequestService {
-    rpc GetLSNodes(TopologyRequest) returns (LSNodeResponse) {}
-    rpc GetLSLinks(TopologyRequest) returns (LSLinkResponse) {}
-    rpc GetLSPrefixes(TopologyRequest) returns (LSPrefixResponse) {}
-    rpc GetLSSRv6SIDs(TopologyRequest) returns (LSSRv6SIDResponse) {}
+    rpc GetLsNodes(TopologyRequest) returns (LsNodeResponse) {}
+    rpc GetLsLinks(TopologyRequest) returns (LsLinkResponse) {}
+    rpc GetLsPrefixes(TopologyRequest) returns (LsPrefixResponse) {}
+    rpc GetLsSrv6Sids(TopologyRequest) returns (LsSrv6SidResponse) {}
+    rpc GetLsNodeEdges(TopologyRequest) returns (LsNodeEdgeResponse) {}
     rpc GetTelemetryData(TelemetryRequest) returns (TelemetryResponse) {}
 }
 ```
 
 ## Methods
 
-### `GetLSNodes()`
+### `GetLsNodes()`
 
 ```protobuf
-rpc GetLSNodes(TopologyRequest) returns (LSNodeResponse) {}
+rpc GetLsNodes(TopologyRequest) returns (LsNodeResponse) {}
 ```
 
-*See also*: [TopologyRequest](messages#topologyrequest), [LSNodeResponse](messages#lsnoderesponse)
+*See also*: [TopologyRequest](messages#topologyrequest), [LsNodeResponse](messages#lsnoderesponse)
 
 #### Description
 
-Takes a [TopologyRequest](messages#topologyrequest) with the specified **keys** and **propertyNames** and returns an [LSNodeResponse](messages#lsnoderesponse) containing all requested [LSNodes](messages#lsnode) with the requested properties.
+Takes a [TopologyRequest](messages#topologyrequest) with the specified **keys** and **propertyNames** and returns an [LsNodeResponse](messages#lsnoderesponse) containing all requested [LsNodes](messages#lsnode) with the requested properties.
 
-- Omitting **keys** returns all available [LSNodes](messages#lsnode).
-- Omitting **propertyNames** returns [LSNodes](messages#lsnode) with all available properties.
+- Omitting **keys** returns all available [LsNodes](messages#lsnode).
+- Omitting **propertyNames** returns [LsNodes](messages#lsnode) with all available properties.
 
 #### Examples
 
-keys | propertyNames | [LSNodeResponse](messages#lsnoderesponse)
+keys | propertyNames | [LsNodeResponse](messages#lsnoderesponse)
 --- | --- | ---
-[<br />"nodeKey1",<br />"nodeKey2"<br />] | [<br />"Name",<br />"ASN",<br />"RouterIP"<br />] | [LSNodeResponse](messages#lsnoderesponse) contains [LSNodes](messages#lsnode) for the two specified keys with the three requested properties.
-- | [<br />"Name",<br />"ASN",<br />"RouterIP"<br />] | [LSNodeResponse](messages#lsnoderesponse) contains all available [LSNodes](messages#lsnode) with the three requested properties.
-[<br />"nodeKey1",<br />"nodeKey2"<br />] | - | [LSNodeResponse](messages#lsnoderesponse) contains [LSNodes](messages#lsnode) for the two specified keys with all available properties.
-- | - | [LSNodeResponse](messages#lsnoderesponse) contains all available [LSNodes](messages#lsnode) with all available properties.
+[<br />"nodeKey1",<br />"nodeKey2"<br />] | [<br />"Name",<br />"Asn",<br />"RouterIp"<br />] | [LsNodeResponse](messages#lsnoderesponse) contains [LsNodes](messages#lsnode) for the two specified keys with the three requested properties.
+- | [<br />"Name",<br />"Asn",<br />"RouterIp"<br />] | [LsNodeResponse](messages#lsnoderesponse) contains all available [LsNodes](messages#lsnode) with the three requested properties.
+[<br />"nodeKey1",<br />"nodeKey2"<br />] | - | [LsNodeResponse](messages#lsnoderesponse) contains [LsNodes](messages#lsnode) for the two specified keys with all available properties.
+- | - | [LsNodeResponse](messages#lsnoderesponse) contains all available [LsNodes](messages#lsnode) with all available properties.
 
-### `GetLSLinks()`
+### `GetLsLinks()`
 
 ```protobuf
-rpc GetLSLinks(TopologyRequest) returns (LSLinkResponse) {}
+rpc GetLsLinks(TopologyRequest) returns (LsLinkResponse) {}
 ```
 
-*See also*: [TopologyRequest](messages#topologyrequest), [LSLinkResponse](messages#lslinkresponse)
+*See also*: [TopologyRequest](messages#topologyrequest), [LsLinkResponse](messages#lslinkresponse)
 
 #### Description
 
-See method [GetLSNodes()](#getlsnodes). It follows the same principle regarding **keys** and **propertyNames**.
+See method [GetLsNodes()](#getlsnodes). It follows the same principle regarding **keys** and **propertyNames**.
 
-### `GetLSPrefixes()`
+### `GetLsPrefixes()`
 
 ```protobuf
-rpc GetLSPrefixes(TopologyRequest) returns (LSPrefixResponse) {}
+rpc GetLsPrefixes(TopologyRequest) returns (LsPrefixResponse) {}
 ```
 
-*See also*: [TopologyRequest](messages#topologyrequest), [LSPrefixResponse](messages#lsprefixresponse)
+*See also*: [TopologyRequest](messages#topologyrequest), [LsPrefixResponse](messages#lsprefixresponse)
 
 #### Description
 
-See method [GetLSNodes()](#getlsnodes). It follows the same principle regarding **keys** and **propertyNames**.
+See method [GetLsNodes()](#getlsnodes). It follows the same principle regarding **keys** and **propertyNames**.
 
-### `GetLSSRv6SIDs()`
+### `GetLsSrv6Sids()`
 
 ```protobuf
-rpc GetLSSRv6SIDs(TopologyRequest) returns (LSSRv6SIDResponse) {}
+rpc GetLsSrv6Sids(TopologyRequest) returns (LsSrv6SidResponse) {}
 ```
 
-*See also*: [TopologyRequest](messages#topologyrequest), [LSSRv6SIDResponse](messages#lssrv6sidresponse)
+*See also*: [TopologyRequest](messages#topologyrequest), [LsSrv6SidResponse](messages#lssrv6sidresponse)
 
 #### Description
 
-See method [GetLSNodes()](#getlsnodes). It follows the same principle regarding **keys** and **propertyNames**.
+See method [GetLsNodes()](#getlsnodes). It follows the same principle regarding **keys** and **propertyNames**.
+
+### `GetLsNodeEdges()`
+
+```protobuf
+rpc GetLsNodeEdges(TopologyRequest) returns (LsNodeEdgeResponse) {}
+```
+
+*See also*: [TopologyRequest](messages#topologyrequest), [LsNodeEdgeResponse](messages#lsnodeedgeresponse)
+
+#### Description
+
+See method [GetLsNodes()](#getlsnodes). It follows the same principle regarding **keys** and **propertyNames**.
 
 ### `GetTelemetryData()`
 

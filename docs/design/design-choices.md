@@ -52,7 +52,7 @@ This way, when the *DataRate* is set explicitly to *0*, the field points to the 
 
 For more detail see this thread on [Stackoverflow](https://stackoverflow.com/a/42634681).
 
-### But is it wise to implement an old protocol?
+### But isn't proto2 going to be deprecated soon?
 
 Google has no intentions of deprecating *proto2* but is maintaining both versions simultaneously (see [here](https://groups.google.com/g/protobuf/c/h-nwPLb42ac)).
 
