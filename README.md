@@ -34,11 +34,24 @@ Use one of the following commands build the website and push it to the `gh-pages
 For more information see the official [Docusaurus documentation](https://docusaurus.io/docs/deployment).
 
 #### Bash
-```bash
+
+```
 $ GIT_USER=<Your GitHub username> USE_SSH=true yarn deploy
 ```
 
 #### PowerShell
+
 ```
 $ cmd /C 'set "GIT_USER=<Your GitHub username>" && yarn deploy'
 ```
+
+### Versioning
+
+The directory `versioned_docs/` contains the files for the individual versions.
+The directory `docs/` is the working directory. Edit the files here. Once you are done, create a new version with:
+
+```
+$ yarn run docusaurus docs:version X.X.X
+```
+
+This will automatically generated the versioned files and make a new entry in `./versions.json`.

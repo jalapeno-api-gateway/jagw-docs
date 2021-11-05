@@ -13,7 +13,9 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
   favicon: 'img/favicon.ico',
   organizationName: 'jalapeno-api-gateway', // Usually your GitHub org/user name.
   projectName: 'jagw-docs', // Usually your repo name.
-  trailingSlash: false,
+  customFields: {
+    trailingSlash: false,
+  },
 
   presets: [
     [
@@ -53,6 +55,10 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
             docId: 'api/request-service',
             position: 'left',
             label: 'API',
+          },
+          {
+            type: 'docsVersionDropdown',
+            position: 'right',
           },
           {
             href: 'https://github.com/jalapeno-api-gateway',
