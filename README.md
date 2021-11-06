@@ -54,4 +54,4 @@ The directory `docs/` is the working directory. Edit the files here. Once you ar
 $ yarn run docusaurus docs:version X.X.X
 ```
 
-This will automatically generated the versioned files and make a new entry in `./versions.json`.
+This will automatically generate the versioned files and make a new entry in `./versions.json`. This file determines which versions will be visible on the website.
