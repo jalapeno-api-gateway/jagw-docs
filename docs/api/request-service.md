@@ -104,16 +104,56 @@ rpc GetTelemetryData(TelemetryRequest) returns (TelemetryResponse) {}
 
 #### Description
 
-Takes a [TelemetryRequest](messages#telemetryrequest) with the specified **ipv4addresses** and **propertyNames** and returns an [TelemetryResponse](messages#telemetryresponse) containing [TelemetryData](messages#telemetrydata) objects (one for each **ipv4address**) and all requested properties.
+Takes a [TelemetryRequest](messages#telemetryrequest) and returns a [TelemetryResponse](messages#telemetryresponse) containing an array of JSON strings.
 
-- Omitting **ipv4addresses** returns an empty [TelemetryResponse](messages#telemetryresponse).
-- Omitting **propertyNames** returns [TelemetryData](messages#telemetrydata) with all available properties.
+The Jalapeño API Gateway works with all Yang Models that are supported by Jalapeño. To use a Yang Model, simply configure it on the routers and supply the Sensor Path in the request.
 
-#### Examples
+```protobuf
+message TelemetryRequest {
+    required string sensor_path = 1;
+    repeated string properties = 2;
+    repeated StringFilter string_filters = 3;
+    optional RangeFilter range_filter = 4;
+}
+```
 
-ipv4addresses | propertyNames | [TelemetryResponse](messages#telemetryresponse)
---- | --- | ---
-[<br />"1.2.3.4",<br />"2.3.4.5"<br />] | [<br />"DataRate",<br />"PacketsSent",<br />"PacketsReceived"<br />] | [TelemetryResponse](messages#telemetryresponse) contains [TelemetryData](messages#telemetrydata) for the two specified ipv4addresses with the three requested properties.
-- | [<br />"DataRate",<br />"PacketsSent",<br />"PacketsReceived"<br />] | [TelemetryResponse](messages#telemetryresponse) contains no [TelemetryData](messages#telemetrydata)!
-[<br />"1.2.3.4",<br />"2.3.4.5"<br />] | - | [TelemetryResponse](messages#telemetryresponse) contains [TelemetryData](messages#telemetrydata) for the two specified ipv4addresses with all available properties.
-- | - | [TelemetryResponse](messages#telemetryresponse) contains no [TelemetryData](messages#telemetrydata)!
+- **sensor_path**: Sensor Path of which data is requested (i.e. `"Cisco-IOS-XR-pfi-im-cmd-oper:interfaces/interface-xr/interface"`)
+- **properties**: String array of properties to select from the Yang Model. The property names are the **exact** sensor path that point to the property but without the more generic Sensor Path specified before, (i.e. `"data_rates/output_data_rate"`)
+- **StringFilter**: Allows to filter by string values.
+- **RangeFilter**: Allows to request a range of data.
+
+```json
+TelemetryRequest {
+    sensorPath: "Cisco-IOS-XR-pfi-im-cmd-oper:interfaces/interface-xr/interface",
+    properties: [
+        "data_rates/output_data_rate",
+        "interface_statistics/full_interface_stats/bytes_sent"
+        ],
+    StringFilter: [
+        {
+            property: "source",
+            value: "XR-8",
+            operator: StringOperator.EQUAL
+        }
+    ],
+    RangeFilter: {
+        earliestTimestamp: 1630050953974000000
+    }
+}
+```
+
+The response contains JSON objects where the property names match the ones from the Yang Model, but converted to camel case.
+
+For example, `data_rates/output_data_rate` becomes `DataRates_OutputDataRate`.
+
+```json
+TelemetryResponse {
+    telemetryData: [
+        "{
+            Time: \"2021-11-10T08:53:08.382Z\",
+            DataRates_OutputDataRate: 53,
+            InterfaceStatistics_FullInterfaceStats_BytesSent: 447
+        }"
+    ]
+}
+```
