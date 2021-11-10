@@ -150,7 +150,7 @@ For example, `data_rates/output_data_rate` becomes `DataRates_OutputDataRate`.
 TelemetryResponse {
     telemetryData: [
         "{
-            Time: \"2021-11-10T08:53:08.382Z\",
+            Time: "2021-11-10T08:53:08.382Z",
             DataRates_OutputDataRate: 53,
             InterfaceStatistics_FullInterfaceStats_BytesSent: 447
         }"
