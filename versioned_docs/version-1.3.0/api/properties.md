@@ -9,9 +9,9 @@ import TOCInline from "@theme/TOCInline"
 
 ## About Properties
 
-When making a request or a subscription you can specify **properties** (i.e. in [TopologyRequest](request-service#topologyrequest) or [TelemetrySubscription](subscription-service#telemetrysubscription)). This allows you to define the properties you want to be returned for the requested objects. This is optional, since omitting **properties** results in all available properties being returned.
+When making a request or a subscription you can specify **properties** (i.e. in [TopologyRequest](request-service#topologyrequest)). This allows you to define the properties you want to be returned for the requested objects. This is optional, since omitting **properties** results in all available properties being returned.
 
-Different objects provide different **properties** (i.e. [LSNode](messages#lsnode), [LSLink](messages#lslink), [TelemetryData](messages#telemetrydata)).
+Different objects provide different **properties** (i.e. [LSNode](messages#lsnode), [LSLink](messages#lslink)).
 
 :::caution invalid properties
 The Jalapeño API Gateway ignores invalid properties. Make sure therefore, that the strings you provide match the properties below exactly.
@@ -115,14 +115,3 @@ The Jalapeño API Gateway ignores invalid properties. Make sure therefore, that 
 - `"From"`
 - `"To"`
 - `"Link"`
-
-### Properties for Physical Interfaces
-
-- `"DataRate"`
-- `"PacketsSent"`
-- `"PacketsReceived"`
-
-### Properties for Loopback Interfaces
-
-- `"State"`
-- `"LastStateTransitionTime"`

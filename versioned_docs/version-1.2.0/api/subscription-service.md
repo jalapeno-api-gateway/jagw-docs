@@ -32,14 +32,14 @@ rpc SubscribeToLsNodes(TopologySubscription) returns (stream LsNodeEvent) {}
 
 #### Description
 
-Takes a [TopologySubscription](messages#topologysubscription) with the specified **keys** and **propertyNames** and returns a stream of [LsNodeEvents](messages#lsnodeevent). An LsNodeEvent contains an update to a single [LsNode](messages#lsnode). Only [LsNodes](messages#lsnode) matching one of the specified **keys** are returned and only properties specified in **propertyNames** are set.
+Takes a [TopologySubscription](messages#topologysubscription) with the specified **keys** and **properties** and returns a stream of [LsNodeEvents](messages#lsnodeevent). An LsNodeEvent contains an update to a single [LsNode](messages#lsnode). Only [LsNodes](messages#lsnode) matching one of the specified **keys** are returned and only properties specified in **properties** are set.
 
 - Omitting **keys** streams [LsNodeEvents](messages#lsnodeevent) for all available [LsNodes](messages#lsnode).
-- Omitting **propertyNames** streams [LsNodeEvents](messages#lsnodeevent) for [LsNodes](messages#lsnode) with all available properties.
+- Omitting **properties** streams [LsNodeEvents](messages#lsnodeevent) for [LsNodes](messages#lsnode) with all available properties.
 
 #### Examples
 
-keys | propertyNames | [LsNodeEvents](messages#lsnodeevent)
+keys | properties | [LsNodeEvents](messages#lsnodeevent)
 --- | --- | ---
 [<br />"nodeKey1",<br />"nodeKey2"<br />] | [<br />"Name",<br />"Asn",<br />"RouterIp"<br />] | Streams [LsNodeEvents](messages#lsnodeevent) for [LsNodes](messages#lsnode) for the two specified keys with the three requested properties.
 - | [<br />"Name",<br />"Asn",<br />"RouterIp"<br />] | Streams [LsNodeEvents](messages#lsnodeevent) for all available [LsNodes](messages#lsnode) with the three requested properties.
@@ -56,7 +56,7 @@ rpc SubscribeToLsLinks(TopologySubscription) returns (stream LsLinkEvent) {}
 
 #### Description
 
-See method [SubscribeToLsNodes()](#subscribetolsnodes). It follows the same principle regarding **keys** and **propertyNames**.
+See method [SubscribeToLsNodes()](#subscribetolsnodes). It follows the same principle regarding **keys** and **properties**.
 
 ### `SubscribeToLsPrefixes()`
 
@@ -68,7 +68,7 @@ rpc SubscribeToLsPrefixes(TopologySubscription) returns (stream LsPrefixEvent) {
 
 #### Description
 
-See method [SubscribeToLsNodes()](#subscribetolsnodes). It follows the same principle regarding **keys** and **propertyNames**.
+See method [SubscribeToLsNodes()](#subscribetolsnodes). It follows the same principle regarding **keys** and **properties**.
 
 ### `SubscribeToLsSrv6Sids()`
 
@@ -80,7 +80,7 @@ rpc SubscribeToLsSrv6Sids(TopologySubscription) returns (stream LsSrv6SidEvent) 
 
 #### Description
 
-See method [SubscribeToLsNodes()](#subscribetolsnodes). It follows the same principle regarding **keys** and **propertyNames**.
+See method [SubscribeToLsNodes()](#subscribetolsnodes). It follows the same principle regarding **keys** and **properties**.
 
 ### `SubscribeToLsNodeEdges()`
 
@@ -92,7 +92,7 @@ rpc SubscribeToLsNodeEdges(TopologySubscription) returns (stream LsNodeEdgeEvent
 
 #### Description
 
-See method [SubscribeToLsNodes()](#subscribetolsnodes). It follows the same principle regarding **keys** and **propertyNames**.
+See method [SubscribeToLsNodes()](#subscribetolsnodes). It follows the same principle regarding **keys** and **properties**.
 
 ### `SubscribeToTelemetryData()`
 
@@ -104,14 +104,14 @@ rpc SubscribeToTelemetryData(TelemetrySubscription) returns (stream TelemetryEve
 
 #### Description
 
-Takes a [TelemetrySubscription](messages#telemetrysubscription) with the specified **ipv4addresses** and **propertyNames** and returns a stream of [TelemetryEvents](messages#telemetryevent). A TelemetryEvent contains an update to a single event tied to an ipv4address.
+Takes a [TelemetrySubscription](messages#telemetrysubscription) with the specified **ipv4addresses** and **properties** and returns a stream of [TelemetryEvents](messages#telemetryevent). A TelemetryEvent contains an update to a single event tied to an ipv4address.
 
 - Omitting **ipv4addresses** streams [TelemetryEvents](messages#telemetryevent) for all available ipv4addresses.
-- Omitting **propertyNames** streams [TelemetryEvents](messages#telemetryevent) with all available properties.
+- Omitting **properties** streams [TelemetryEvents](messages#telemetryevent) with all available properties.
 
 #### Examples
 
-ipv4addresses | propertyNames | [TelemetryEvent](messages#telemetryevent)
+ipv4addresses | properties | [TelemetryEvent](messages#telemetryevent)
 --- | --- | ---
 [<br />"1.2.3.4",<br />"2.3.4.5"<br />] | [<br />"DataRate",<br />"PacketsSent",<br />"PacketsReceived"<br />] | Streams [TelemetryEvents](messages#telemetryevent) for the two specified ipv4addresses with the three requested properties.
 - | [<br />"DataRate",<br />"PacketsSent",<br />"PacketsReceived"<br />] | Streams [TelemetryEvents](messages#telemetryevent) for all available ipv4addresses with the three specified properties.

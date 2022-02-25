@@ -38,7 +38,7 @@ The reason for this design choice is explained in the section [Why use proto2 in
 ```protobuf
 message TopologyRequest {
     repeated string keys = 1;
-    repeated string property_names = 2;
+    repeated string properties = 2;
 }
 ```
 
@@ -128,7 +128,7 @@ message TelemetryResponse {
 ```protobuf
 message TopologySubscription {
     repeated string keys = 1;
-    repeated string property_names = 2;
+    repeated string properties = 2;
 }
 ```
 
@@ -137,7 +137,7 @@ message TopologySubscription {
 ```protobuf
 message TelemetrySubscription {
     repeated InterfaceIdentifier interface_ids = 1;
-    repeated string property_names = 2;
+    repeated string properties = 2;
 }
 ```
 

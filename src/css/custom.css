@@ -6,14 +6,16 @@
 
 /* You can override the default Infima variables here. */
 :root {
-  --ifm-color-primary: #54BD84;
-  --ifm-color-primary-dark: rgb(89, 191, 136);
-  --ifm-color-primary-darker: rgb(64, 166, 110);
-  --ifm-color-primary-darkest: rgb(50, 129, 86);
-  --ifm-color-primary-light: rgb(126, 205, 162);
-  --ifm-color-primary-lighter: rgb(163, 219, 189);
-  --ifm-color-primary-lightest: rgb(200, 234, 215);
+  --ifm-color-primary: #227C3C;
+  --ifm-color-primary-dark: #1C6E45;
+  --ifm-color-primary-darker: #175F4B;
+  --ifm-color-primary-darkest: #12514C;
+  --ifm-color-primary-light: #61A15B;
+  --ifm-color-primary-lighter: #88B378;
+  --ifm-color-primary-lightest: #a0d38e;
   --ifm-code-font-size: 95%;
+  --black: #000;
+  --details: #d7e5ff;
 }
 
 .docusaurus-highlight-code-line {
@@ -32,4 +34,23 @@ html[data-theme='dark'] .docusaurus-highlight-code-line {
   margin: 3rem auto 1rem auto;
   font-size: 1.3rem;
   width: 40%;
+}
+
+.codeBlockDetails {
+  color: var(--black);
+  background: var(--details);
+  border: 1px solid var(--black) !important;
+  --docusaurus-details-decoration-color: var(--black) !important;
+}
+
+.codeBlockContainer {
+  margin: 1rem auto;
+}
+
+.downArrow {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  font-size: 2rem;
+  font-weight: 900;
 }

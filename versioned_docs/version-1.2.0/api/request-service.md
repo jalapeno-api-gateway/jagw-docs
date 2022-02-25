@@ -32,14 +32,14 @@ rpc GetLsNodes(TopologyRequest) returns (LsNodeResponse) {}
 
 #### Description
 
-Takes a [TopologyRequest](messages#topologyrequest) with the specified **keys** and **propertyNames** and returns an [LsNodeResponse](messages#lsnoderesponse) containing all requested [LsNodes](messages#lsnode) with the requested properties.
+Takes a [TopologyRequest](messages#topologyrequest) with the specified **keys** and **properties** and returns an [LsNodeResponse](messages#lsnoderesponse) containing all requested [LsNodes](messages#lsnode) with the requested properties.
 
 - Omitting **keys** returns all available [LsNodes](messages#lsnode).
-- Omitting **propertyNames** returns [LsNodes](messages#lsnode) with all available properties.
+- Omitting **properties** returns [LsNodes](messages#lsnode) with all available properties.
 
 #### Examples
 
-keys | propertyNames | [LsNodeResponse](messages#lsnoderesponse)
+keys | properties | [LsNodeResponse](messages#lsnoderesponse)
 --- | --- | ---
 [<br />"nodeKey1",<br />"nodeKey2"<br />] | [<br />"Name",<br />"Asn",<br />"RouterIp"<br />] | [LsNodeResponse](messages#lsnoderesponse) contains [LsNodes](messages#lsnode) for the two specified keys with the three requested properties.
 - | [<br />"Name",<br />"Asn",<br />"RouterIp"<br />] | [LsNodeResponse](messages#lsnoderesponse) contains all available [LsNodes](messages#lsnode) with the three requested properties.
@@ -56,7 +56,7 @@ rpc GetLsLinks(TopologyRequest) returns (LsLinkResponse) {}
 
 #### Description
 
-See method [GetLsNodes()](#getlsnodes). It follows the same principle regarding **keys** and **propertyNames**.
+See method [GetLsNodes()](#getlsnodes). It follows the same principle regarding **keys** and **properties**.
 
 ### `GetLsPrefixes()`
 
@@ -68,7 +68,7 @@ rpc GetLsPrefixes(TopologyRequest) returns (LsPrefixResponse) {}
 
 #### Description
 
-See method [GetLsNodes()](#getlsnodes). It follows the same principle regarding **keys** and **propertyNames**.
+See method [GetLsNodes()](#getlsnodes). It follows the same principle regarding **keys** and **properties**.
 
 ### `GetLsSrv6Sids()`
 
@@ -80,7 +80,7 @@ rpc GetLsSrv6Sids(TopologyRequest) returns (LsSrv6SidResponse) {}
 
 #### Description
 
-See method [GetLsNodes()](#getlsnodes). It follows the same principle regarding **keys** and **propertyNames**.
+See method [GetLsNodes()](#getlsnodes). It follows the same principle regarding **keys** and **properties**.
 
 ### `GetLsNodeEdges()`
 
@@ -92,7 +92,7 @@ rpc GetLsNodeEdges(TopologyRequest) returns (LsNodeEdgeResponse) {}
 
 #### Description
 
-See method [GetLsNodes()](#getlsnodes). It follows the same principle regarding **keys** and **propertyNames**.
+See method [GetLsNodes()](#getlsnodes). It follows the same principle regarding **keys** and **properties**.
 
 ### `GetTelemetryData()`
 

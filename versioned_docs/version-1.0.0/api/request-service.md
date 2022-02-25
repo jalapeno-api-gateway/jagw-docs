@@ -32,14 +32,14 @@ rpc GetLsNodes(TopologyRequest) returns (LsNodeResponse) {}
 
 #### Description
 
-Takes a [TopologyRequest](messages#topologyrequest) with the specified **keys** and **propertyNames** and returns an [LsNodeResponse](messages#lsnoderesponse) containing all requested [LsNodes](messages#lsnode) with the requested properties.
+Takes a [TopologyRequest](messages#topologyrequest) with the specified **keys** and **properties** and returns an [LsNodeResponse](messages#lsnoderesponse) containing all requested [LsNodes](messages#lsnode) with the requested properties.
 
 - Omitting **keys** returns all available [LsNodes](messages#lsnode).
-- Omitting **propertyNames** returns [LsNodes](messages#lsnode) with all available properties.
+- Omitting **properties** returns [LsNodes](messages#lsnode) with all available properties.
 
 #### Examples
 
-keys | propertyNames | [LsNodeResponse](messages#lsnoderesponse)
+keys | properties | [LsNodeResponse](messages#lsnoderesponse)
 --- | --- | ---
 [<br />"nodeKey1",<br />"nodeKey2"<br />] | [<br />"Name",<br />"Asn",<br />"RouterIp"<br />] | [LsNodeResponse](messages#lsnoderesponse) contains [LsNodes](messages#lsnode) for the two specified keys with the three requested properties.
 - | [<br />"Name",<br />"Asn",<br />"RouterIp"<br />] | [LsNodeResponse](messages#lsnoderesponse) contains all available [LsNodes](messages#lsnode) with the three requested properties.
@@ -56,7 +56,7 @@ rpc GetLsLinks(TopologyRequest) returns (LsLinkResponse) {}
 
 #### Description
 
-See method [GetLsNodes()](#getlsnodes). It follows the same principle regarding **keys** and **propertyNames**.
+See method [GetLsNodes()](#getlsnodes). It follows the same principle regarding **keys** and **properties**.
 
 ### `GetLsPrefixes()`
 
@@ -68,7 +68,7 @@ rpc GetLsPrefixes(TopologyRequest) returns (LsPrefixResponse) {}
 
 #### Description
 
-See method [GetLsNodes()](#getlsnodes). It follows the same principle regarding **keys** and **propertyNames**.
+See method [GetLsNodes()](#getlsnodes). It follows the same principle regarding **keys** and **properties**.
 
 ### `GetLsSrv6Sids()`
 
@@ -80,7 +80,7 @@ rpc GetLsSrv6Sids(TopologyRequest) returns (LsSrv6SidResponse) {}
 
 #### Description
 
-See method [GetLsNodes()](#getlsnodes). It follows the same principle regarding **keys** and **propertyNames**.
+See method [GetLsNodes()](#getlsnodes). It follows the same principle regarding **keys** and **properties**.
 
 ### `GetLsNodeEdges()`
 
@@ -92,7 +92,7 @@ rpc GetLsNodeEdges(TopologyRequest) returns (LsNodeEdgeResponse) {}
 
 #### Description
 
-See method [GetLsNodes()](#getlsnodes). It follows the same principle regarding **keys** and **propertyNames**.
+See method [GetLsNodes()](#getlsnodes). It follows the same principle regarding **keys** and **properties**.
 
 ### `GetTelemetryData()`
 
@@ -104,14 +104,14 @@ rpc GetTelemetryData(TelemetryRequest) returns (TelemetryResponse) {}
 
 #### Description
 
-Takes a [TelemetryRequest](messages#telemetryrequest) with the specified **ipv4addresses** and **propertyNames** and returns an [TelemetryResponse](messages#telemetryresponse) containing [TelemetryData](messages#telemetrydata) objects (one for each **ipv4address**) and all requested properties.
+Takes a [TelemetryRequest](messages#telemetryrequest) with the specified **ipv4addresses** and **properties** and returns an [TelemetryResponse](messages#telemetryresponse) containing [TelemetryData](messages#telemetrydata) objects (one for each **ipv4address**) and all requested properties.
 
 - Omitting **ipv4addresses** returns an empty [TelemetryResponse](messages#telemetryresponse).
-- Omitting **propertyNames** returns [TelemetryData](messages#telemetrydata) with all available properties.
+- Omitting **properties** returns [TelemetryData](messages#telemetrydata) with all available properties.
 
 #### Examples
 
-ipv4addresses | propertyNames | [TelemetryResponse](messages#telemetryresponse)
+ipv4addresses | properties | [TelemetryResponse](messages#telemetryresponse)
 --- | --- | ---
 [<br />"1.2.3.4",<br />"2.3.4.5"<br />] | [<br />"DataRate",<br />"PacketsSent",<br />"PacketsReceived"<br />] | [TelemetryResponse](messages#telemetryresponse) contains [TelemetryData](messages#telemetrydata) for the two specified ipv4addresses with the three requested properties.
 - | [<br />"DataRate",<br />"PacketsSent",<br />"PacketsReceived"<br />] | [TelemetryResponse](messages#telemetryresponse) contains no [TelemetryData](messages#telemetrydata)!

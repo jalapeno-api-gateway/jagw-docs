@@ -32,19 +32,170 @@ rpc GetLsNodes(TopologyRequest) returns (LsNodeResponse) {}
 
 #### Description
 
-Takes a [TopologyRequest](messages#topologyrequest) with the specified **keys** and **propertyNames** and returns an [LsNodeResponse](messages#lsnoderesponse) containing all requested [LsNodes](messages#lsnode) with the requested properties.
+Takes a [TopologyRequest](messages#topologyrequest) with the specified **keys** and **properties** and returns an [LsNodeResponse](messages#lsnoderesponse) containing all requested [LsNodes](messages#lsnode) with the requested properties.
 
 - Omitting **keys** returns all available [LsNodes](messages#lsnode).
-- Omitting **propertyNames** returns [LsNodes](messages#lsnode) with all available properties.
+- Omitting **properties** returns [LsNodes](messages#lsnode) with all available properties.
 
 #### Examples
 
-keys | propertyNames | [LsNodeResponse](messages#lsnoderesponse)
---- | --- | ---
-[<br />"nodeKey1",<br />"nodeKey2"<br />] | [<br />"Name",<br />"Asn",<br />"RouterIp"<br />] | [LsNodeResponse](messages#lsnoderesponse) contains [LsNodes](messages#lsnode) for the two specified keys with the three requested properties.
-- | [<br />"Name",<br />"Asn",<br />"RouterIp"<br />] | [LsNodeResponse](messages#lsnoderesponse) contains all available [LsNodes](messages#lsnode) with the three requested properties.
-[<br />"nodeKey1",<br />"nodeKey2"<br />] | - | [LsNodeResponse](messages#lsnoderesponse) contains [LsNodes](messages#lsnode) for the two specified keys with all available properties.
-- | - | [LsNodeResponse](messages#lsnoderesponse) contains all available [LsNodes](messages#lsnode) with all available properties.
+<details className="codeBlockDetails">
+<summary>Example 1</summary>
+<div>
+Request specific properties of specific LsNodes.
+<div className="codeBlockContainer">
+
+```json
+TopologyRequest {
+    "keys": [
+        "nodeKey1",
+        "nodeKey2"
+    ],
+    "properties": [
+        "Key",
+        "Name",
+        "Asn"
+    ]
+}
+```
+
+</div>
+<div className="downArrow">&#129047;</div>
+<div className="codeBlockContainer">
+
+```json
+LsNodeResponse {
+    "LsNodes": [
+        {
+            "Key": "nodeKey1",
+            "Name": "XR-1",
+            "Asn": 65001
+        },
+        {
+            "Key": "nodeKey2",
+            "Name": "XR-2",
+            "Asn": 65001
+        }
+    ]
+}
+```
+
+</div>
+</div>
+</details>
+
+<details className="codeBlockDetails">
+<summary>Example 2</summary>
+<div>
+Request specific properties of all available LsNodes.
+<div className="codeBlockContainer">
+
+```json
+TopologyRequest {
+    "properties": [
+        "Key",
+        "Name",
+        "Asn"
+    ]
+}
+```
+
+</div>
+<div className="downArrow">&#129047;</div>
+<div className="codeBlockContainer">
+
+```json
+LsNodeResponse {
+    "LsNodes": [
+        ...
+        {
+            "Key": "nodeKey7",
+            "Name": "XR-7",
+            "Asn": 65002
+        },
+        ...
+    ]
+}
+```
+
+</div>
+</div>
+</details>
+
+<details className="codeBlockDetails">
+<summary>Example 3</summary>
+<div>
+Request all properties of specific LsNodes.
+<div className="codeBlockContainer">
+
+```json
+TopologyRequest {
+    "keys": [
+        "nodeKey1",
+        "nodeKey2"
+    ],
+}
+```
+
+</div>
+<div className="downArrow">&#129047;</div>
+<div className="codeBlockContainer">
+
+```json
+LsNodeResponse {
+    "LsNodes": [
+        {
+            "Key": "nodeKey1",
+            "Id": 773,
+            "RouterHash": "7eb583cb3c17c496cfa9370d9bc2a3eb",
+            ...
+        },
+        {
+            "Key": "nodeKey2",
+            "Id": 809,
+            "RouterHash": "8a75f65ed2153517f0e4e25f7e5112e8",
+            ...
+        }
+    ]
+}
+```
+
+</div>
+</div>
+</details>
+
+<details className="codeBlockDetails">
+<summary>Example 4</summary>
+<div>
+Request all properties of all available LsNodes.
+<div className="codeBlockContainer">
+
+```json
+TopologyRequest {}
+```
+
+</div>
+<div className="downArrow">&#129047;</div>
+<div className="codeBlockContainer">
+
+```json
+LsNodeResponse {
+    "LsNodes": [
+        ...
+        {
+            "Key": "nodeKey7",
+            "Id": 773,
+            "RouterHash": "7eb583cb3c17c496cfa9370d9bc2a3eb",
+            ...
+        },
+        ...
+    ]
+}
+```
+
+</div>
+</div>
+</details>
 
 ### `GetLsLinks()`
 
@@ -56,7 +207,7 @@ rpc GetLsLinks(TopologyRequest) returns (LsLinkResponse) {}
 
 #### Description
 
-See method [GetLsNodes()](#getlsnodes). It follows the same principle regarding **keys** and **propertyNames**.
+See method [GetLsNodes()](#getlsnodes). It follows the same principle regarding **keys** and **properties**.
 
 ### `GetLsPrefixes()`
 
@@ -68,7 +219,7 @@ rpc GetLsPrefixes(TopologyRequest) returns (LsPrefixResponse) {}
 
 #### Description
 
-See method [GetLsNodes()](#getlsnodes). It follows the same principle regarding **keys** and **propertyNames**.
+See method [GetLsNodes()](#getlsnodes). It follows the same principle regarding **keys** and **properties**.
 
 ### `GetLsSrv6Sids()`
 
@@ -80,7 +231,7 @@ rpc GetLsSrv6Sids(TopologyRequest) returns (LsSrv6SidResponse) {}
 
 #### Description
 
-See method [GetLsNodes()](#getlsnodes). It follows the same principle regarding **keys** and **propertyNames**.
+See method [GetLsNodes()](#getlsnodes). It follows the same principle regarding **keys** and **properties**.
 
 ### `GetLsNodeEdges()`
 
@@ -92,7 +243,7 @@ rpc GetLsNodeEdges(TopologyRequest) returns (LsNodeEdgeResponse) {}
 
 #### Description
 
-See method [GetLsNodes()](#getlsnodes). It follows the same principle regarding **keys** and **propertyNames**.
+See method [GetLsNodes()](#getlsnodes). It follows the same principle regarding **keys** and **properties**.
 
 ### `GetTelemetryData()`
 
@@ -112,48 +263,103 @@ The Jalapeño API Gateway works with all Yang Models that are supported by Jalap
 message TelemetryRequest {
     required string sensor_path = 1;
     repeated string properties = 2;
-    repeated StringFilter string_filters = 3;
-    optional RangeFilter range_filter = 4;
+    optional bool Unflatten = 3;
+    repeated StringFilter string_filters = 4;
+    optional RangeFilter range_filter = 5;
 }
 ```
 
-- **sensor_path**: Sensor Path of which data is requested (i.e. `"Cisco-IOS-XR-pfi-im-cmd-oper:interfaces/interface-xr/interface"`)
-- **properties**: String array of properties to select from the Yang Model. The property names are the **exact** sensor path that point to the property but without the more generic Sensor Path specified before, (i.e. `"data_rates/output_data_rate"`)
+- **SensorPath**: Sensor Path of which data is requested (i.e. `"Cisco-IOS-XR-pfi-im-cmd-oper:interfaces/interface-xr/interface"`)
+- **Properties**: String array of properties to select from the Yang Model. The property names are the **exact** sensor path that point to the property but without the more generic Sensor Path specified before, (i.e. `"data_rates/output_data_rate"`)
 - **StringFilter**: Allows to filter by string values.
 - **RangeFilter**: Allows to request a range of data.
 
+<br />
+
+:::info JAGW Explorer
+The SR-App **JAGW Explorer** is a useful tool that can help you determine the exact name of the SensorPath and the Properties called JAGW Explorer. The code is available on [GitHub](https://github.com/INSRapperswil/jagw-explorer). The application can be deployed using the docker image or in a Kubernetes cluster using the Helm chart.
+:::
+
+#### Examples
+
+<details className="codeBlockDetails">
+<summary>Example 1</summary>
+<div>
+<div className="codeBlockContainer">
+
 ```json
 TelemetryRequest {
-    sensorPath: "Cisco-IOS-XR-pfi-im-cmd-oper:interfaces/interface-xr/interface",
-    properties: [
+    "SensorPath": "Cisco-IOS-XR-pfi-im-cmd-oper:interfaces/interface-xr/interface",
+    "Properties": [
         "data_rates/output_data_rate",
         "interface_statistics/full_interface_stats/bytes_sent"
         ],
-    StringFilter: [
+    "Unflatten": false,
+    "StringFilter": [
         {
-            property: "source",
-            value: "XR-8",
-            operator: StringOperator.EQUAL
+            "Property": "source",
+            "Value": "XR-8",
+            "Operator": StringOperator.EQUAL
         }
     ],
-    RangeFilter: {
-        earliestTimestamp: 1630050953974000000
+    "RangeFilter": {
+        "EarliestTimestamp": 1630050953974000000
     }
 }
 ```
 
-The response contains JSON objects where the property names match the ones from the Yang Model, but converted to camel case.
-
-For example, `data_rates/output_data_rate` becomes `DataRates_OutputDataRate`.
+</div>
+<div className="downArrow">&#129047;</div>
+<div className="codeBlockContainer">
 
 ```json
 TelemetryResponse {
-    telemetryData: [
+    "TelemetryData": [
         "{
-            Time: "2021-11-10T08:53:08.382Z",
-            DataRates_OutputDataRate: 53,
-            InterfaceStatistics_FullInterfaceStats_BytesSent: 447
+            \"time\": \"2021-11-10T08:53:08.382Z\",
+            \"data_rates/output_data_rate\": 53,
+            \"interface_statistics/full_interface_stats/bytes_sent\": 447
         }"
     ]
 }
 ```
+
+<div className="downArrow">&#129047;</div>
+
+The JSON string can then be parsed to this:
+
+```json
+{
+    "time": "2021-11-10T08:53:08.382Z",
+    "data_rates/output_data_rate": 53,
+    "interface_statistics/full_interface_stats/bytes_sent": 447
+}
+```
+
+<div className="downArrow">&#129047;</div>
+
+If **Unflatten** is set to **true** in the original request, the resulting JSON would look like this:
+
+```json
+{
+    "time": "2021-11-10T08:53:08.382Z",
+    "data_rates": {
+        "output_data_rate": 53,
+    },
+    "interface_statistics": {
+        "full_interface_stats": {
+            "bytes_sent": 447
+        }
+    }
+}
+```
+
+</div>
+</div>
+</details>
+
+
+
+
+
+
