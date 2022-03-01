@@ -18,6 +18,10 @@
   --details: #d7e5ff;
 }
 
+* {
+  image-rendering: -webkit-optimize-contrast;
+}
+
 .docusaurus-highlight-code-line {
   background-color: rgba(0, 0, 0, 0.1);
   display: block;
