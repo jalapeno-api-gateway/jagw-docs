@@ -82,7 +82,7 @@ Placeholder | Description
 <ingress-telegraf-port\> | The port number of the ingress Telegraf (default: **32400**)
 <sample-interval-in-ms\> | The frequency of how often the router pushes updates. A common value is **10000** (10 seconds).
 
-## Verify Your YANG push configuration
+## Verify Your YANG Push configuration
 
 To verify your YANG push configuration run the following command on the router:
 
