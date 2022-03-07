@@ -82,7 +82,7 @@ Placeholder | Description
 <ingress-telegraf-port\> | The port number of the ingress Telegraf (default: **32400**)
 <sample-interval-in-ms\> | The frequency of how often the router pushes updates. A common value is **10000** (10 seconds).
 
-## Verify Your YANG push configuration
+## Verify Your YANG Push configuration
 
 To verify your YANG push configuration run the following command on the router:
 
@@ -113,7 +113,9 @@ Subscription:  1
     Sensor Path State:    Not Resolved
 ```
 
+:::caution
 If a **Sensor Path State** has the value **Not Resolved** it means, that the router was unable to find the specified Sensor Path locally.
+:::
 
 ## Exploring Locally Stored YANG Models
 
@@ -121,8 +123,8 @@ Routers keep copies of YANG models stored locally. To check if a YANG model is a
 
 ```text
 router# run
-router# cd /pkg/yang
-router# ls
+$ cd /pkg/yang
+$ ls
 ```
 
 ## YANG model support on Cisco IOS-XR
