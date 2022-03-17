@@ -41,7 +41,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
         title: 'Jalapeño API Gateway',
         logo: {
           alt: 'Jalapeño API Gateway Logo',
-          src: 'img/logo.png',
+          src: 'img/jagw-logo.svg',
         },
         items: [
           {
@@ -100,5 +100,8 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
       },
+      colorMode: {
+        disableSwitch: true
+      }
     }),
 });

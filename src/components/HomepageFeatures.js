@@ -6,7 +6,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 const FeatureList = [
   {
     title: 'Cloud-Native',
-    image: '/img/kubernetes.png',
+    image: '/img/kubernetes.svg',
     link: 'docs/installation',
     description: (
       <>
@@ -16,7 +16,7 @@ const FeatureList = [
   },
   {
     title: 'Request Data',
-    image: '/img/request-service.png',
+    image: '/img/request-service-logo.svg',
     link: 'docs/api/request-service',
     description: (
       <>
@@ -26,7 +26,7 @@ const FeatureList = [
   },
   {
     title: 'Subscribe To Data',
-    image: '/img/subscription-service.png',
+    image: '/img/subscription-service-logo.svg',
     link: 'docs/api/subscription-service',
     description: (
       <>
